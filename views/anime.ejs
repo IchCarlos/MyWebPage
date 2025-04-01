@@ -1,0 +1,106 @@
+<%- include("partials/header.ejs") %>
+
+<div id="Anime">
+    <h1 class="titleh2">Get an anime recommendation from an API! 🇯🇵</h1>
+    <div>
+        <form method="get">
+            <label for="">Random Anime</label><br>
+            <input class="btn btn-info" type="submit" name="GET" value="GET" formaction="/get-anime">
+        </form>
+    </div>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide my-6">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner pt-5">
+      <div class="carousel-item active">
+        <div >
+            <% if(locals.data1){ %> 
+                <div id="animeContainer">
+                    <% if(data1.title_english){ %> 
+                        <h3 class="titleh3"><%= data1.title %> - <%= data1.title_english %></h3> 
+                    <% } else { %> 
+                        <h3 class="titleh3"><%= data1.title %> </h3> 
+                    <% } %> 
+                        
+                    <div class="pt-4">
+                        <img src="<%= data1.images.jpg.image_url %>" alt="Anime picture">
+                        <div>
+                            <p>Type: <%= data1.type %></p>
+                            <p>Status: <%= data1.status %></p>
+                            <p>Episodes: <%= data1.episodes %></p>
+                            <p>Duration: ⏱️ <%= data1.duration %></p>
+                            <p>Score: ⭐️  <%= data1.score %></p>
+                            <p>Rank:  <%= data1.rank %></p>    
+                        </div>
+                    </div>
+                </div> 
+            <% } %>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div >
+            <% if(locals.data2){ %> 
+                <div id="animeContainer">
+                    <% if(data2.title_english){ %> 
+                        <h3 class="titleh3"><%= data2.title %> - <%= data2.title_english %></h3> 
+                    <% } else { %> 
+                        <h3 class="titleh3"><%= data2.title %> </h3> 
+                    <% } %> 
+                        
+                    <div class="pt-4">
+                        <img src="<%= data2.images.jpg.image_url %>" alt="Anime picture">
+                        <div>
+                            <p>Type: <%= data2.type %></p>
+                            <p>Status: <%= data2.status %></p>
+                            <p>Episodes: <%= data2.episodes %></p>
+                            <p>Duration: ⏱️ <%= data2.duration %></p>
+                            <p>Score: ⭐️  <%= data2.score %></p>
+                            <p>Rank:  <%= data2.rank %></p>    
+                        </div>
+                    </div>
+                </div> 
+            <% } %>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div >
+            <% if(locals.data3){ %> 
+                <div id="animeContainer">
+                    <% if(data3.title_english){ %> 
+                        <h3 class="titleh3"><%= data3.title %> - <%= data3.title_english %></h3> 
+                    <% } else { %> 
+                        <h3 class="titleh3"><%= data3.title %> </h3> 
+                    <% } %> 
+                        
+                    <div class="pt-4">
+                        <img src="<%= data3.images.jpg.image_url %>" alt="Anime picture">
+                        <div>
+                            <p>Type: <%= data3.type %></p>
+                            <p>Status: <%= data3.status %></p>
+                            <p>Episodes: <%= data3.episodes %></p>
+                            <p>Duration: ⏱️ <%= data3.duration %></p>
+                            <p>Score: ⭐️  <%= data3.score %></p>
+                            <p>Rank:  <%= data3.rank %></p>    
+                        </div>
+                    </div>
+                </div> 
+            <% } %>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs") %>
+
+<div id="Blogger" class="container">
+
+    <div class="my-3">
+        <button type="button" id="postBlog" class="btn btn-info">Add Post</button><button type="button" id="cancelPost" class="btn notVisible"><img src="./Images/delete.png" width="25px" alt="delete"></button>
+    </div>
+
+    <div id="createSection" class="my-3 notVisible">
+        <label for="createTitle" class="mx-3 mt-2 mb-0"><h2>Title:</h2></label><br>
+        <input id="createTitle" class="mx-3 mb-1" type="text"><br>
+        <label for="createArea" class="mx-3 mt-2 "><h2>Text:</h2></label><br>
+        <textarea id="createArea" class="mx-3 mb-1" cols="50" rows="3"></textarea>
+    </div>
+
+    <div id="myPosts">
+        <div id="postId0">
+            <h3>My first Post</h3>
+            <p>Feel free to post a message </p>
+            <button class="btn p-1"><img src="./Images/edit.png"  alt="edit"></button>
+            <button class="btn p-1"><img src="./Images/delete.png"  alt="delete"></button>
+        </div>
+    </div>
+    
+</div>
+
+
+<%- include("partials/footer.ejs") %>

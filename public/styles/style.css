@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    font-family: sans-serif;
+}
+body > div#Intro > img{
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px solid white;
+}
+.titleh2{
+    color: #83b2db;
+    padding-bottom: 15px;
+}
+#Intro{
+    text-align: center;
+    background-color: #83b2db;
+    padding: 100px 20px;
+    width: 100%;
+}
+#Intro > div{
+    width: 50%;
+    margin: auto;
+}
+h1{
+    margin-bottom: 10px;
+    color: white;
+}
+h2{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.titleh3{
+    text-align: center;
+    color: red;
+}
+#Education li{
+    list-style-type: none;
+}
+#Education, #Skills, #Certifications, #Contact, #Anime{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 100px 20px;
+}
+#Anime{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 20px 20px;
+}
+#WorkExperience{
+    width: 70%;
+    margin: auto;
+    padding: 100px 20px;
+}
+#WorkExperience > div {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#WorkExperience div img {
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    height: 200px;
+}
+ol{
+    list-style-type: none;
+}
+p{
+    margin: 10px !important;
+}
+hr{
+    border: dotted 2px #83b2db;
+    border-bottom: none;
+    width: 200px;
+    margin: auto;
+}
+#Intro h2{
+    color: white;
+}
+#Certifications > ul {
+    text-align: left;
+}
+#Certifications > ul > li {
+  padding-bottom: 5px;
+}
+#Contact > img{
+    height: 50px;
+}
+#Footer{
+    width: 100%;
+    padding: 15px;
+    background-color: #83b2db;
+    position: static;
+    /* left: 0;
+    bottom: 0; */
+
+}
+#Footer > div{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+#Footer p {
+    display: inline-block;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+   /* font-size: 30px;*/
+}
+@media (max-width:720px) {
+    #WorkExperience > div {
+        flex-direction: column;    
+    }    
+    #WorkExperience div img {
+        width: 200px;
+        margin: auto;
+    }
+}
+
+ul > li > a.listColor {
+    color: #83b2db;
+    font-weight: bold;
+}
+
+#myPosts img{
+    width: 25px;
+}
+
+#myPosts img:hover{
+    scale: 1.5;
+}
+
+#myPosts p{
+    margin: 0 !important;
+    display: inline;
+}
+
+#myPosts > div{
+    border: black solid 1px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0px;
+    background-color:#00b5ff33;
+}
+
+.focusEdit{
+    border: solid 2px blue;
+    border-radius: 5px;
+}
+
+div#createSection > input {
+    margin-right: 10px !important;
+    
+}
+
+#createSection{
+    border: solid 1px black;
+    border-radius: 20px;
+    font-family: sans-serif;
+    background-color:#00b5ff33;
+}
+
+.notVisible{
+    display: none !important;
+}
+
+.visible{
+    display: block !important;
+}
+div#Blogger {
+    height: 78vh;
+}
+div#Contact {
+    height: 80vh;
+}
+
+#animeContainer{
+    width: 40%;
+    height: 400px;
+    margin: auto;
+    padding: 20px 20px;
+    border: 2px black solid;
+    border-radius: 20px;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,0.8407738095238095) 100%);
+}
+
+#animeContainer > div{
+    display: flex;
+    gap: 10px;
+    text-align: left;
+    justify-content: center;
+}
+
+#animeContainer > div > div > p{
+    font-weight: bold;
+}
+
+#animeContainer > div > img{
+    height: 250px;
+}
