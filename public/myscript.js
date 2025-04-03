@@ -1,8 +1,6 @@
-var counter = 1;
-
-document.querySelector("#postBlog").addEventListener("click", function()  {
+function createPost(){
     let checker = document.querySelector("#postBlog").innerText;
-    if( checker == "Add Post"){
+    if (checker == "Add Post") {
         if(editChecker()){
             alert("You are already editing a post");
         }else{
@@ -11,19 +9,16 @@ document.querySelector("#postBlog").addEventListener("click", function()  {
             document.querySelector("#createSection").classList.add("visible");
             document.querySelector("#postBlog").innerText = "Save Post";
         }
-        
     } else {
         let Title = document.querySelector("#createTitle").value;
         let Text = document.querySelector("#createArea").value;
         if(Title == "" || Text == ""){
             alert("There are some empty fields.");
         }else {
-            hidepostBuilder();
-            createPost(Title, Text);
+            document.querySelector("#createSection > form").submit();  
         }
-        
     }
-});
+}
 
 document.querySelector("#cancelPost").addEventListener("click", function(){
     hidepostBuilder();
@@ -39,76 +34,32 @@ function hidepostBuilder(){
     document.querySelector("#cancelPost").classList.add("notVisible");
 }
 
-function createPost(inTitle, inText){
-    counter++;
-    let myDiv = document.createElement("div");
-    myDiv.setAttribute("id",`postId${counter}`);
-
-    let myTitle = document.createElement("h3");
-    myTitle.innerText = inTitle;
-
-    let myText = document.createElement("p");
-    myText.innerText = inText;
-
-    let myEdit = document.createElement("button");
-    myEdit.setAttribute("alt","edit");
-    myEdit.classList.add("btn");
-    myEdit.classList.add("p-1");
-    let myEditImg = document.createElement("img");
-    myEditImg.setAttribute("src", "./Images/edit.png");
-    myEdit.appendChild(myEditImg);
-
-    addClickEvent(myEdit);
-
-    let myDelete = document.createElement("button");
-    myDelete.setAttribute("alt","delete");
-    myDelete.classList.add("btn");
-    myDelete.classList.add("p-1");
-    let myDeleteImg = document.createElement("img");
-    myDeleteImg.setAttribute("src", "./Images/delete.png");
-    myDelete.appendChild(myDeleteImg);
-
-    myDelete.addEventListener("click", function(){
-        this.parentElement.remove();
-    });
-
-    myDiv.appendChild(myTitle);
-    myDiv.appendChild(myText);
-    myDiv.appendChild(myEdit);
-    myDiv.appendChild(myDelete);
-    
-    document.querySelector("#myPosts").appendChild(myDiv);
+function editPost(id){
+    if (editChecker()) {
+        alert("You are already editing a post");
+    } else if(document.querySelector("#postBlog").innerText == "Save Post") {
+        alert("You are already creating a post");
+    } else {
+        document.getElementById(`postEdit${id}`).classList.add("notVisible");
+        document.querySelector(`#postId${id} > h3`).contentEditable=true;
+        document.querySelector(`#postId${id} > h3`).classList.add("focusEdit");
+        document.querySelector(`#postId${id} > p`).contentEditable=true;
+        document.querySelector(`#postId${id} > p`).classList.add("focusEdit");
+        document.getElementById(`postSave${id}`).classList.remove("notVisible");
+    }
 }
 
-addClickEvent(document.querySelector("#myPosts > div > button"));
-
-function addClickEvent(element){
-    element.addEventListener("click", function(){
-        if(this.previousElementSibling.classList.contains("focusEdit")){
-            this.previousElementSibling.contentEditable=false;
-            this.previousElementSibling.classList.remove("focusEdit");
-            this.previousElementSibling.previousElementSibling.contentEditable=false;
-            this.previousElementSibling.previousElementSibling.classList.remove("focusEdit");
-            this.firstChild.setAttribute("src","./Images/edit.png");
-        }else {
-            if(editChecker()){
-                alert("Sorry, You are already editing one Post");
-            }else if(document.querySelector("#createSection").classList.contains("visible")){
-                alert("You are already creating a Post.");
-            }else{
-                this.previousElementSibling.contentEditable=true;
-                this.previousElementSibling.classList.add("focusEdit");
-                this.previousElementSibling.previousElementSibling.contentEditable=true;
-                this.previousElementSibling.previousElementSibling.classList.add("focusEdit");
-                this.firstChild.setAttribute("src","./Images/save.png");
-            }     
-        }
-    });
+function savePost(id){
+    document.getElementById(`inputTitle${id}`).value = document.querySelector(`#postId${id} > h3`).innerText;
+    document.getElementById(`inputMessage${id}`).value = document.querySelector(`#postId${id} > p`).innerText;
+    document.querySelector(`#postId${id} > form`).submit();
 }
 
-document.querySelector("#myPosts > div > button:nth-child(4)").addEventListener("click", function(){
-    this.parentElement.remove();
-});
+function deletePost(id){
+    if (confirm("Are you sure you want to delete this Post?")) {
+        document.querySelector(`#postId${id}`).lastElementChild.submit();
+    } 
+}
 
 function editChecker(){
     let count = 0;
