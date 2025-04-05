@@ -207,3 +207,12 @@ div#Contact {
 #animeContainer > div > img{
     height: 250px;
 }
+
+#myPosts > div > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#myPosts > div > div > p {
+    color: gray;
+}

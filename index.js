@@ -2,6 +2,8 @@ import  express  from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import pg from "pg";
+//import mysql from "mysql2/promise";
+
 
 const port = 3000;
 const app = express();
@@ -12,8 +14,15 @@ const db = new pg.Client({
   password: "NeoPostgres2025",
   port: 5432,
 });
+// const mydb = await mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "rootroot",
+//     database: "blog"
+// });
 
 db.connect();
+//mydb.connect();
 
 app.use(express.static("public"));
 
@@ -28,9 +37,9 @@ app.get("/contact", (req,res) => {
 });
 
 app.get("/Blogs", async (req,res) => {
-    const result = await db.query("SELECT id, title, message, user_name, created_at FROM fullpost ORDER BY id ASC");
-    console.log(result.rows);
-    res.render("blog.ejs", { data: result.rows});
+    const results = await db.query("SELECT id, title, message, user_name, created_at FROM fullpost ORDER BY id ASC");
+    console.log(results.rows);
+    res.render("blog.ejs", { data: results.rows});
 });
 
 app.post("/updatePost", async (req, res) => {

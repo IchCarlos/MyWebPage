@@ -16,9 +16,29 @@
     </div>
 
     <div id="myPosts">
+        <% const time = new Date(); %>
         <% data.forEach((post)=>{ %> 
             <div id="postId<%= post.id %>">
-                <h3><%= post.title %></h3>
+                <% let difTime = Math.floor((time - post.created_at)/1000) %>
+                <% let timeText = ""; %>
+                <% if (difTime > 60) { %> 
+                    <% difTime = Math.floor(difTime/60); %> 
+                    <% if (difTime > 60) { %> 
+                        <% difTime = Math.floor(difTime/60); %> 
+                        <% if (difTime > 24) { %> 
+                            <% timeText = post.created_at.toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " "); %> 
+                        <% } else { %> 
+                            <% timeText = `${difTime} hours ago` %> 
+                        <% } %> 
+                    <% } else { %> 
+                        <% timeText = `${difTime} min ago` %> 
+                    <% }  %> 
+                <% } else { %>
+                    <% timeText = `${difTime} seg ago`; %> 
+                <% } %>  
+                <div>
+                    <h3><%= post.title %></h3><p><%= timeText %></p>
+                </div> 
                 <p><%= post.message %></p>  
                 <button class="btn p-1" id="postEdit<%= post.id %>" onclick="editPost('<%= post.id %>')"><img src="./Images/edit.png"  alt="edit"></button>
                 <button class="btn p-1 notVisible" id="postSave<%= post.id %>" onclick="savePost('<%= post.id %>')"><img src="./Images/save.png"  alt="edit"></button>
