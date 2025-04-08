@@ -2,17 +2,20 @@ import  express  from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import pg from "pg";
+import env from "dotenv";
 //import mysql from "mysql2/promise";
 
 
 const port = 3000;
 const app = express();
+env.config();
+
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "blog",
-  password: "NeoPostgres2025",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 // const mydb = await mysql.createConnection({
 //     host: "localhost",
