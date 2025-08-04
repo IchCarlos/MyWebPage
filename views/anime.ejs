@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div id="carouselExampleIndicators" class="carousel slide my-6">
+<div id="carouselExampleIndicators" class="carousel slide my-5 pb-5">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -22,12 +22,12 @@
             <% if(locals.data1){ %> 
                 <div id="animeContainer">
                     <% if(data1.title_english){ %> 
-                        <h3 class="titleh3"><%= data1.title %> - <%= data1.title_english %></h3> 
+                        <h3 class="titleh3"><%= data1.title %> %></h3> 
                     <% } else { %> 
                         <h3 class="titleh3"><%= data1.title %> </h3> 
                     <% } %> 
                         
-                    <div class="pt-4">
+                    <div class="py-4">
                         <img src="<%= data1.images.jpg.image_url %>" alt="Anime picture">
                         <div>
                             <p>Type: <%= data1.type %></p>
@@ -47,7 +47,7 @@
             <% if(locals.data2){ %> 
                 <div id="animeContainer">
                     <% if(data2.title_english){ %> 
-                        <h3 class="titleh3"><%= data2.title %> - <%= data2.title_english %></h3> 
+                        <h3 class="titleh3"><%= data2.title %> %></h3> 
                     <% } else { %> 
                         <h3 class="titleh3"><%= data2.title %> </h3> 
                     <% } %> 
@@ -72,7 +72,7 @@
             <% if(locals.data3){ %> 
                 <div id="animeContainer">
                     <% if(data3.title_english){ %> 
-                        <h3 class="titleh3"><%= data3.title %> - <%= data3.title_english %></h3> 
+                        <h3 class="titleh3"><%= data3.title %> %></h3> 
                     <% } else { %> 
                         <h3 class="titleh3"><%= data3.title %> </h3> 
                     <% } %> 
@@ -101,6 +101,6 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
 
 <%- include("partials/footer.ejs") %>

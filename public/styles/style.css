@@ -96,9 +96,9 @@ hr{
     width: 100%;
     padding: 15px;
     background-color: #83b2db;
-    position: static;
-    /* left: 0;
-    bottom: 0; */
+    position: fixed;
+    left: 0;
+    bottom: 0; 
 
 }
 #Footer > div{
@@ -176,8 +176,10 @@ div#createSection > input {
 .visible{
     display: block !important;
 }
+
 div#Blogger {
-    height: 78vh;
+    /* height: 78vh; */
+    /* margin-bottom: auto; */
 }
 div#Contact {
     height: 80vh;
@@ -205,7 +207,8 @@ div#Contact {
 }
 
 #animeContainer > div > img{
-    height: 250px;
+    max-height: 225px;
+    max-width: 225px;
 }
 
 #myPosts > div > div {

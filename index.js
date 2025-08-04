@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import env from "dotenv";
 //import mysql from "mysql2/promise";
+import bcryt from "bcrypt";
 
 
 const port = 3000;
@@ -18,17 +19,16 @@ const db = new pg.Client({
   port: process.env.PG_PORT,
 });
 // const mydb = await mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "rootroot",
-//     database: "blog"
+//     host: process.env.SQL_HOST,
+//     user: process.env.SQL_USER,
+//     password: process.env.SQL_PASSWORD,
+//     database: process.env.SQL_DATABASE,
 // });
 
 db.connect();
 //mydb.connect();
 
 app.use(express.static("public"));
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/",(req,res) => {
@@ -37,6 +37,10 @@ app.get("/",(req,res) => {
 
 app.get("/contact", (req,res) => {
     res.render("contact.ejs");
+});
+
+app.get("/login", (req,res) => {
+    res.render("login.ejs");
 });
 
 app.get("/Blogs", async (req,res) => {
@@ -85,6 +89,10 @@ app.get("/get-anime", async (req,res) => {
     const result3 = await axios.get("https://api.jikan.moe/v4/random/anime");
     res.render("anime.ejs", {data1 : result1.data.data, data2: result2.data.data, data3: result3.data.data });
 });
+
+app.get("/login", (req,res) =>{
+    res.render("login.ejs");
+})
 
 app.listen(port, (req,res) => {
     console.log(`Server running on port ${port}`);
